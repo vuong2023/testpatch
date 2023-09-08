@@ -1,3 +1,11 @@
+# 1.0.0 (2023-09-08)
+
+
+### Bug Fixes
+
+* youtube name ([e964b31](https://github.com/vuong2023/testpatch/commit/e964b31361426bd46f6b3e1c305fefed565398c8))
+* youtube string ([dff2c4e](https://github.com/vuong2023/testpatch/commit/dff2c4e4f06ad4056dee5570d2686041d43a2131))
+
 # [2.190.0](https://github.com/YT-Advanced/testpatch/compare/v2.189.1...v2.190.0) (2023-09-08)
 
 
