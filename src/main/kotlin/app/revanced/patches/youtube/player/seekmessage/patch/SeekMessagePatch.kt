@@ -12,6 +12,7 @@ import app.revanced.patcher.patch.annotations.DependsOn
 import app.revanced.patcher.patch.annotations.Patch
 import app.revanced.patcher.util.smali.ExternalLabel
 import app.revanced.patches.youtube.player.seekmessage.fingerprints.SeekEduContainerFingerprint
+import app.revanced.patches.youtube.player.seekmessage.fingerprints.SeekUndoEduContainer
 import app.revanced.patches.youtube.utils.annotations.YouTubeCompatibility
 import app.revanced.patches.youtube.utils.resourceid.patch.SharedResourceIdPatch
 import app.revanced.patches.youtube.utils.settings.resource.patch.SettingsPatch
@@ -19,7 +20,7 @@ import app.revanced.util.integrations.Constants.PLAYER
 
 @Patch
 @Name("Hide seek message")
-@Description("Hides the 'Slide left or right to seek' message container.")
+@Description("Hides message container when you touch taskbar.")
 @DependsOn(
     [
         SettingsPatch::class,
@@ -29,7 +30,10 @@ import app.revanced.util.integrations.Constants.PLAYER
 @YouTubeCompatibility
 
 class SeekMessagePatch : BytecodePatch(
-    listOf(SeekEduContainerFingerprint)
+    listOf(
+        SeekEduContainerFingerprint,
+        SeekUndoEduContainer
+    )
 ) {
     override fun execute(context: BytecodeContext) {
 
@@ -45,6 +49,19 @@ class SeekMessagePatch : BytecodePatch(
                 )
             }
         } ?: throw SeekEduContainerFingerprint.exception
+
+        SeekUndoEduContainer.result?.let {
+            it.mutableMethod.apply {
+                addInstructionsWithLabels(
+                    0, """
+                        invoke-static {}, $PLAYER->hideSeekMessage()Z
+                        move-result v0
+                        if-eqz v0, :default
+                        return-void
+                        """, ExternalLabel("default", getInstruction(0))
+                )
+            }
+        } ?: throw SeekUndoEduContainer.exception
 
         /**
          * Add settings

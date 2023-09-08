@@ -67,6 +67,7 @@ class SharedResourceIdPatch : ResourcePatch {
         var RightComment: Long = -1
         var ScrimOverlay: Long = -1
         var Scrubbing: Long = -1
+        var SeekUndoEduContainer: Long = -1
         var SettingsBooleanTimeRangeDialog: Long = -1
         var SuggestedAction: Long = -1
         var Thumbnail: Long = -1
@@ -143,6 +144,7 @@ class SharedResourceIdPatch : ResourcePatch {
         RightComment = find(DRAWABLE, "ic_right_comment_32c")
         ScrimOverlay = find(ID, "scrim_overlay")
         Scrubbing = find(DIMEN, "vertical_touch_offset_to_enter_fine_scrubbing")
+        SeekUndoEduContainer = find(ID, "seek_undo_edu_container")
         SettingsBooleanTimeRangeDialog = find(LAYOUT, "setting_boolean_time_range_dialog")
         SuggestedAction = find(LAYOUT, "suggested_action")
         Thumbnail = find(ID, "thumbnail")
