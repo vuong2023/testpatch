@@ -1,1 +1,1 @@
-rootProject.name = "testpatch"
+rootProject.name = "revanced-patches"
