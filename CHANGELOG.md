@@ -1,3 +1,10 @@
+# [2.191.0](https://github.com/vuong2023/testpatch/compare/v2.190.1...v2.191.0) (2023-09-18)
+
+
+### Features
+
+* Readd Ads Whitelist ([b416e7b](https://github.com/vuong2023/testpatch/commit/b416e7bd75e3627796453917addba29082a84ea8))
+
 # [2.190.0](https://github.com/YT-Advanced/ReX-patches/compare/v2.189.1...v2.190.0) (2023-09-11)
 
 
